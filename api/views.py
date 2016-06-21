@@ -16,22 +16,24 @@ class VoteView(APIView):
         votes_data = {
             'voting':{
                             'id': 10,
-                            'name': 'Jorge',
+                            'type': 'Diputados',
                             'vote_date': '2016-11-10',
                             'voting_totals': [
                             {
                                 'id': 234,
                                 'politic_party': 'JUJIU',
-                                'total_votes': '200'
+                                'total_votes': 200,
+                                'candidate_name': 'Fabiola'
                             },
                             {
                                 'id': 43,
                                 'politic_party': 'JUJIU',
-                                'total_votes': '200'
+                                'total_votes': 200,
+                                'candidate_name': 'Joaquin'
                             }
                             ],
-                            'citizen_participation': '400',
-                            'total_votes': 123.34
+                            'citizen_participation': 400,
+                            'total_votes': 123
                     }
         }
         votes_serializer = Voting(data=votes_data)
