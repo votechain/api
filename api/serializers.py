@@ -1,23 +1,29 @@
 from rest_framework import serializers
 
 
-class VotingTotalSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    candidate_name = serializers.CharField(required=False)
-    politic_party = serializers.CharField()
-    total_votes = serializers.IntegerField()
+class CandidatesSerializer(serializers.Serializer):
+    candidato_id = serializers.IntegerField()
+    id_partido = serializers.IntegerField()
+    nombre = serializers.CharField(required=False)
+    nombre_partido = serializers.CharField()
+    photo_url = serializers.URLField()
+    logo_partido = serializers.URLField()
+    total_votes = serializers.IntegerField(required=False)
+    propuestas = serializers.ListField(
+        child=serializers.CharField()
+    )
 
 
 class VotingData(serializers.Serializer):
-    id = serializers.IntegerField()
-    type = serializers.CharField()
-    vote_date = serializers.CharField()
-    voting_totals = serializers.ListField(
-        child=VotingTotalSerializer()
+    idvotacion = serializers.IntegerField()
+    tipo = serializers.CharField()
+    cadidatos = serializers.ListField(
+        child=CandidatesSerializer()
     )
-    citizen_participation = serializers.FloatField()
-    total_votes = serializers.IntegerField()
+    participacion_ciudadana = serializers.FloatField(required=False)
+    listanominal = serializers.IntegerField(required=False)
+    votos_totales = serializers.IntegerField(required=False)
 
 
 class Voting(serializers.Serializer):
-    voting = VotingData()
+    votacion = VotingData()
