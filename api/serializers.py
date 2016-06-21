@@ -11,7 +11,7 @@ class VotingTotalSerializer(serializers.Serializer):
 class VotingData(serializers.Serializer):
     id = serializers.IntegerField()
     type = serializers.CharField()
-    vote_date = serializers.DateTimeField()
+    vote_date = serializers.CharField()
     voting_totals = serializers.ListField(
         child=VotingTotalSerializer()
     )
